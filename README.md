@@ -1,4 +1,4 @@
-# 🔒 SOC Home Lab — Security Operations Environment
+# 🔒 Enterprise-SOC-Lab — Security Operations Environment
 
 > A self-built, fully functional Security Operations Center (SOC) environment designed to simulate real-world threat detection, incident response, and network security monitoring.
 
