@@ -1,135 +1,250 @@
-# 🔒 Enterprise-SOC-Lab — Security Operations Environment
+<p align="center">
+  <img src="assets/github-banner.png" alt="Enterprise SOC Lab Banner">
+</p>
 
-> A self-built, fully functional Security Operations Center (SOC) environment designed to simulate real-world threat detection, incident response, and network security monitoring.
+<p align="center">
+  <img src="assets/loroinc.png" width="180" alt="LOROINC Logo">
+</p>
 
----
+# Enterprise SOC Lab
 
-## 📌 Project Overview
+> Enterprise Security Operations Center built from the ground up to simulate a real-world corporate infrastructure.
 
-This home lab replicates a small enterprise security environment. The goal is to practice hands-on blue team skills — log analysis, SIEM alerting, firewall management, and Active Directory administration — while also running controlled offensive scenarios to validate detection coverage.
-
-**Status:** 🟡 In progress — actively expanding
-
----
-
-## 🏗️ Lab Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                     VMware Workstation                  │
-│                                                         │
-│  ┌──────────────┐    ┌──────────────┐                  │
-│  │  OPNsense    │    │ Windows      │                  │
-│  │  Firewall /  │◄──►│ Server 2022  │                  │
-│  │  Router      │    │ (AD, DNS,    │                  │
-│  │              │    │  DHCP, GPO)  │                  │
-│  └──────┬───────┘    └──────────────┘                  │
-│         │                                               │
-│  ┌──────▼───────┐    ┌──────────────┐                  │
-│  │  Ubuntu      │    │  Windows 11  │                  │
-│  │  (Wazuh      │◄──►│  Endpoint    │                  │
-│  │   SIEM)      │    │  (monitored) │                  │
-│  └──────────────┘    └──────────────┘                  │
-│                                                         │
-│  ┌──────────────┐                                       │
-│  │  Parrot OS   │  ← Offensive / attack simulation      │
-│  │  (Red Team)  │                                       │
-│  └──────────────┘                                       │
-└─────────────────────────────────────────────────────────┘
-```
+![Windows Server](https://img.shields.io/badge/Windows_Server-2022-blue)
+![Active Directory](https://img.shields.io/badge/Active_Directory-DS-success)
+![Wazuh](https://img.shields.io/badge/Wazuh-SIEM-green)
+![OPNsense](https://img.shields.io/badge/OPNsense-Firewall-orange)
+![Docker](https://img.shields.io/badge/Docker-Containers-blue)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-E95420)
+![VMware](https://img.shields.io/badge/VMware-Workstation-607078)
+![Status](https://img.shields.io/badge/Status-In_Progress-yellow)
 
 ---
 
-## 🧰 Tech Stack
+# Project Overview
 
-| Component | Technology | Role |
-|---|---|---|
-| Hypervisor | VMware Workstation | Host all VMs |
-| Firewall / Router | OPNsense | Network segmentation, traffic inspection, firewall rules |
-| SIEM | Wazuh (Ubuntu) | Log ingestion, alerting, dashboards |
-| Domain Controller | Windows Server 2022 | Active Directory, DNS, DHCP, GPO |
-| Endpoint | Windows 11 | Monitored workstation (Wazuh agent) |
-| Attack Platform | Parrot OS | Offensive testing, attack simulation |
+The Enterprise SOC Lab is a professional home lab designed to replicate the infrastructure of a modern enterprise organization.
+
+The environment combines enterprise networking, Windows Server administration, Linux administration, virtualization, firewall management, centralized logging, endpoint monitoring, and security operations into a single integrated environment.
+
+The objective is to demonstrate practical skills used by Systems Administrators, IT Support Engineers, Infrastructure Engineers, and SOC Analysts.
 
 ---
 
-## ✅ What's Been Built
+# Enterprise Network Architecture
 
-### 🔥 Firewall & Network (OPNsense)
-- Configured firewall rules to segment lab into isolated network zones
-- Set up inter-VLAN routing and traffic inspection rules
-- Enabled logging of blocked/allowed traffic for SIEM ingestion
-- Configured DNS and DHCP services for the lab network
+<p align="center">
+<img src="assets/enterprise-network.png" width="100%">
+</p>
 
-### 🏢 Active Directory (Windows Server 2022)
-- Deployed a full AD DS environment from scratch
-- Created Organizational Units (OUs), users, and security groups
-- Configured Group Policy Objects (GPOs) for endpoint hardening
-- Integrated endpoints as domain-joined machines
+The network consists of:
 
-### 📊 SIEM & Monitoring (Wazuh on Ubuntu)
-- Deployed Wazuh manager and installed agents on Windows and Linux endpoints
-- Configured log ingestion from Windows Event Logs, Sysmon, and OPNsense
-- Built custom detection rules to identify suspicious activity
-- Analyzed security dashboards for anomalies and alert patterns
-
-### ⚔️ Attack Simulation (Parrot OS)
-- Conducted controlled attack scenarios against lab endpoints
-- Used Nmap for host discovery and port scanning
-- Used Wireshark to capture and analyze network traffic
-- Validated Wazuh detection rules against simulated attacks
-- Documented detection gaps and tuned alerting thresholds
+- OPNsense Firewall
+- Windows Server 2022
+- Active Directory Domain Services
+- DNS
+- DHCP
+- Ubuntu Server
+- Docker
+- Portainer
+- Wazuh SIEM
+- Windows 11 Enterprise Client
 
 ---
 
-## 📋 Skills Demonstrated
+# VMware Infrastructure
 
-`Network Security` `SIEM` `Threat Detection` `Incident Response` `Firewall Configuration`
-`Active Directory` `GPO` `Log Analysis` `Linux Administration` `Windows Server`
-`Virtualization` `Blue Team` `Offensive Security (basic)` `Security Monitoring`
+<p align="center">
+<img src="assets/vmware-infrastructure.png" width="100%">
+</p>
 
----
+Virtual Machines:
 
-## 🗺️ Roadmap — What's Coming Next
-
-- [ ] Add Sysmon on Windows endpoints for enhanced log detail
-- [ ] Configure Wazuh vulnerability detection module
-- [ ] Integrate Nessus for scheduled vulnerability scans
-- [ ] Add pfSense IDS/IPS (Suricata) rules
-- [ ] Build automated incident response playbook with n8n
-- [ ] Document full incident investigation walkthroughs
-- [ ] Add a second domain for trust relationship testing
+| Machine | Role |
+|----------|------|
+| OPNsense | Firewall / Router |
+| Windows Server 2022 | Domain Controller |
+| Windows 11 | Enterprise Workstation |
+| Ubuntu Server | Docker + Wazuh |
+| Management Network | Internal Enterprise Network |
 
 ---
 
-## 📁 Repository Structure
+# Active Directory Infrastructure
 
-```
-soc-home-lab/
-├── README.md
-├── architecture/
-│   └── lab-diagram.png
+<p align="center">
+<img src="assets/active-directory-structure.png" width="100%">
+</p>
+
+Services deployed:
+
+- Active Directory Domain Services
+- DNS
+- DHCP
+- Organizational Units
+- Group Policy
+- Security Groups
+- Enterprise User Accounts
+- Shared Resources
+
+---
+
+# Wazuh SIEM Architecture
+
+<p align="center">
+<img src="assets/wazuh-architecture.png" width="100%">
+</p>
+
+Security Monitoring includes:
+
+- Windows Event Logs
+- Linux Logs
+- File Integrity Monitoring
+- Vulnerability Detection
+- Security Alerts
+- Agent Monitoring
+- Dashboard Analytics
+
+---
+
+# Technology Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Virtualization | VMware Workstation |
+| Firewall | OPNsense |
+| Server | Windows Server 2022 |
+| Client | Windows 11 Enterprise |
+| Linux | Ubuntu Server |
+| Identity | Active Directory |
+| DNS | Microsoft DNS |
+| DHCP | Microsoft DHCP |
+| Containers | Docker |
+| Container Management | Portainer |
+| SIEM | Wazuh |
+| Networking | TCP/IP, NAT, VLANs |
+| Documentation | Markdown |
+| Version Control | Git & GitHub |
+
+---
+
+# Skills Demonstrated
+
+- Enterprise Infrastructure
+- Windows Server Administration
+- Active Directory
+- DNS Administration
+- DHCP Administration
+- Group Policy Management
+- Firewall Administration
+- Linux Administration
+- Docker Administration
+- Portainer Management
+- Wazuh SIEM
+- Security Monitoring
+- Event Analysis
+- Network Troubleshooting
+- VMware Virtualization
+- Enterprise Documentation
+- Git Version Control
+
+---
+
+# Screenshots
+
+The following screenshots will be added as the lab progresses.
+
+- VMware Workstation
+- OPNsense Dashboard
+- Windows Server
+- Active Directory
+- DNS Manager
+- DHCP Manager
+- Group Policy
+- Ubuntu Server
+- Docker Containers
+- Portainer
+- Wazuh Dashboard
+- Security Events
+- MITRE ATT&CK
+- Vulnerabilities
+- File Integrity Monitoring
+
+---
+
+# Documentation
+
+| Document | Description |
+|----------|-------------|
+| Company Background | Enterprise overview |
+| Business Requirements | Project requirements |
+| Project Objectives | Goals and scope |
+| VMware Deployment | Virtual infrastructure |
+| Network Design | Network architecture |
+| OPNsense Firewall | Firewall configuration |
+| Windows Server | Server deployment |
+| Active Directory | Domain configuration |
+| DNS & DHCP | Network services |
+| Ubuntu Server | Linux server |
+| Docker & Portainer | Container platform |
+| Wazuh SIEM | Security monitoring |
+| Troubleshooting | Common issues |
+| Lessons Learned | Project reflections |
+| Roadmap | Future improvements |
+
+---
+
+# Roadmap
+
+## Phase 1
+- [x] Enterprise branding
+- [x] Repository structure
+- [x] Architecture diagrams
+
+## Phase 2
+- [ ] VMware screenshots
+- [ ] OPNsense screenshots
+- [ ] Windows Server documentation
+- [ ] Active Directory documentation
+- [ ] Wazuh screenshots
+
+## Phase 3
+- [ ] Incident response scenarios
+- [ ] Vulnerability management
+- [ ] Detection engineering
+- [ ] Security playbooks
+
+---
+
+# Repository Structure
+
+```text
+Enterprise-SOC-Lab/
+│
+├── assets/
 ├── configs/
-│   ├── opnsense-firewall-rules.md
-│   ├── wazuh-custom-rules.xml
-│   └── ad-gpo-settings.md
-├── playbooks/
-│   └── incident-response-template.md
-└── walkthroughs/
-    └── attack-simulation-01.md
+├── diagrams/
+├── docs/
+├── screenshots/
+├── scripts/
+└── README.md
 ```
 
 ---
 
-## 👤 About
+# Author
 
-**Israel Loyo** — Aspiring Cybersecurity Analyst | IT Support Technician
-📍 Montréal, QC | Open to remote & hybrid opportunities
-🎓 Cybersecurity Analyst Diploma — Willis College
-📜 CCNA — In Progress
+**Israel Loyo**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/YOUR-PROFILE-HERE)
+IT Support Technician | Systems Administration | Cybersecurity
+
+- CompTIA Security+
+- Fortinet NSE 3
+- Cybersecurity Analyst Diploma
+- CCNA (In Progress)
 
 ---
 
-> *"The best way to learn security is to build the environment, break it, and fix it."*
+# License
+
+This project is intended for educational, portfolio, and professional demonstration purposes.
