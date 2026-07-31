@@ -202,17 +202,17 @@ The following screenshots will be added as the lab progresses.
 - [x] Architecture diagrams
 
 ## Phase 2
-- [ ] VMware screenshots
-- [ ] OPNsense screenshots
-- [ ] Windows Server documentation
-- [ ] Active Directory documentation
-- [ ] Wazuh screenshots
+- [x] VMware screenshots
+- [x] OPNsense screenshots
+- [x] Windows Server documentation
+- [x] Active Directory documentation
+- [x] Wazuh screenshots
 
 ## Phase 3
-- [ ] Incident response scenarios
-- [ ] Vulnerability management
-- [ ] Detection engineering
-- [ ] Security playbooks
+- [x] Incident response scenarios
+- [x] Vulnerability management
+- [x] Detection engineering
+- [x] Security playbooks
 
 ---
 
